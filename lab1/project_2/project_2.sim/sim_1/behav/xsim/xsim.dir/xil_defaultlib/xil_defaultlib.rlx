@@ -1,0 +1,17 @@
+0.6
+2018.2
+Jun 14 2018
+20:41:02
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/basys3.v,1686088844,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/tb/model_uart.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,basys3,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq.v,1410753508,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_add.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,seq,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_add.v,1410753508,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_alu.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,seq_add,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_alu.v,1410753508,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_mult.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,seq_alu,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,1410753508,verilog,,,,,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_mult.v,1410753508,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_rf.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,seq_mult,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_rf.v,1410753508,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,seq_rf,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart.v,1410753498,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart_fifo.v,,uart,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart_fifo.v,1410753520,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart_top.v,,uart_fifo,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/uart_top.v,1410911592,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/tb/tb.v,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq_definitions.v,uart_top,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/tb/model_uart.v,1410753572,verilog,,C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/rtl/seq.v,,model_uart,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/Src_lab1/Src_lab1/tb/tb.v,1686088952,verilog,,,,tb,,,,,,,,
+C:/Users/zak/Documents/School/CSM152A/lab1/project_2/project_2.sim/sim_1/behav/xsim/glbl.v,1712738570,verilog,,,,glbl,,,,,,,,
