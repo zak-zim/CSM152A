@@ -8,6 +8,7 @@ module tb;
     wire [3:0] mant;
    
     FPCVT UUT(dec, sign, exp, mant);
+    integer i;
    
     initial begin
         #10;
@@ -40,8 +41,16 @@ module tb;
         $display("%012b to S = %01b, E = %03b, M = %04b" , dec, sign, exp, mant);
         #10;
         dec = 12'b101010100101;
-        #10;                                        
+        #10;
+        dec = 12'b000000000000;     
+        #10;                                   
         $display("%012b to S = %01b, E = %03b, M = %04b" , dec, sign, exp, mant);
+//        for(i = 0; i < 12'b111111111111; i = i+1) begin
+//            #10;
+//            dec = dec + 1;
+//            #10;
+//            $display("%012b to S = %01b, E = %03b, M = %04b" , dec, sign, exp, mant);
+//        end
     end
 
 endmodule
