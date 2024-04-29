@@ -1,10 +1,12 @@
 module ParseDec(dec, out, sign);
 
-input [11:0] dec;
-output [10:0] out;
-output sign;
+    input [11:0] dec;
+    output reg [10:0] out;
+    output reg sign;
 
-assign sign = dec[11];
-assign out = sign ? ~dec[10:0] + 1 : dec[10:0]; // IT will overflow ¯\_(?)_/¯
+    always @(*) begin
+        sign = dec[11];
+        out = sign ? ~dec[11:0] + 1 : dec[10:0];
+    end
 
 endmodule
