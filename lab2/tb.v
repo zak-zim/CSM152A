@@ -49,7 +49,7 @@ module tb;
 //            #10;
 //            dec = dec + 1;
 //            #10;
-//            $display("%012b to S = %01b, E = %03b, M = %04b" , dec, sign, exp, mant);
+//            $display("%012b (%d) to S = %01b, E = %03b, M = %04b (%d)" , dec, dec, sign, exp, mant, ((-1 * sign) * mant * 2^(exp)));
 //        end
     end
 
