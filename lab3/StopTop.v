@@ -6,15 +6,15 @@ input sel;
 input adj;
 input pause;
 
-reg counterClk;
-reg adjClk;
-reg dispClk;
-reg blinkClk;
-wire [2:0] enables;
+wire counterClk;
+wire adjClk;
+wire dispClk;
+wire blinkClk;
 wire [5:0] min;
 wire [5:0] sec;
+wire blink;
 
 clock clock(clk, counterClk, adjClk, dispClk, blinkClk);
-StopController controller(clk, adj, pause, enables);
+StopController controller(clk, counterClk, adjClk, adj, pause, sel, reset, min, sec, blink);
 
 endmodule

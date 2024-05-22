@@ -1,14 +1,13 @@
 module tb;
 
     reg clk;
-    wire outClk1;
-    wire outClk2;
-    wire outClk3;
-    wire outClk4;
-            
+    reg reset = 0;
+    reg sel = 0;
+    reg adj = 0;
+    reg pause = 1;
     
-    clock UUT(clk, outClk1, outClk2, outClk3, outClk4);
-    integer i;
+    StopTop UUT(reset, clk, sel, adj, pause);
+    integer i = 0;
     
     initial begin
         clk = 0;
@@ -16,7 +15,12 @@ module tb;
     end
     
     always begin
-        #5 clk = ~clk;
+        #5
+        clk = ~clk;
+        i = i + 1;
+        if(i > 100000) begin
+            adj = 1;
+        end;
     end
     
     
