@@ -14,7 +14,7 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
     reg[26:0] counter3 = 0;
     reg[26:0] counter3_d = 0;
     
-    reg countClk_d = 1;
+    reg countClk_d = 0;
     reg adjClk_d = 0;
     reg dispClk_d = 0;
     reg blinkClk_d = 0;

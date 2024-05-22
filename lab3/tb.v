@@ -8,31 +8,14 @@ reg seconds = 2;
 reg[3:0] AnodeSelect = 0;
 reg[6:0] LED_value = 0;
 seven_seg_display UUT(minutes, seconds, clk, Anode_select);
+>>>>>>> 08bd0f46d885389333b7ac3610ba12b23efd663f
     always begin
-        #5 clk = ~clk;
+        #5
+        clk = ~clk;
+        i = i + 1;
+        if(i > 100000) begin
+            adj = 1;
+        end;
     end
-    
-    
-    
-//    reg clk;
-//    wire outClk1;
-//    wire outClk2;
-//    wire outClk3;
-//    wire outClk4;
-            
-    
-//    clock UUT(clk, outClk1, outClk2, outClk3, outClk4);
-//    integer i;
-    
-//    initial begin
-//        clk = 0;
-//        #1000 $stop;
-//    end
-    
-//    always begin
-//        #5 clk = ~clk;
-//    end
-    
-    
 endmodule
     
