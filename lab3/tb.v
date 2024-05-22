@@ -1,21 +1,43 @@
 module tb;
 
-reg clk=0;
-reg[7:0] switch=0;
-reg[3:0] button;
-reg minutes = 3;
-reg seconds = 2;
-reg[3:0] AnodeSelect = 0;
-reg[6:0] LED_value = 0;
-seven_seg_display UUT(minutes, seconds, clk, Anode_select);
->>>>>>> 08bd0f46d885389333b7ac3610ba12b23efd663f
+    reg clk;
+    reg reset = 0;
+    reg sel = 0;
+    reg adj = 0;
+    reg pause = 0;
+    
+    StopTop UUT(reset, clk, sel, adj, pause);
+    integer i = 0;
+    
+    initial begin
+        clk = 0;
+        #1000 $stop;
+    end
+    
     always begin
         #5
         clk = ~clk;
         i = i + 1;
+        if(i > 50000) begin
+            pause = 1;
+        end
         if(i > 100000) begin
-            adj = 1;
+            pause = 0;
+        end
+        if(i > 20000000) begin
+            reset = 1;
+            pause = 0;
         end;
+        if(i > 20001000) begin
+            reset = 0;
+            adj = 1;
+            pause = 1;
+        end
+        if(i > 20001100) begin
+            pause = 0;
+        end
     end
+    
+    
 endmodule
     
