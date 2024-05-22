@@ -1,19 +1,14 @@
 module tb;
 
-    reg clk;
-    reg reset = 0;
-    reg sel = 0;
-    reg adj = 0;
-    reg pause = 1;
-    
-    StopTop UUT(reset, clk, sel, adj, pause);
-    integer i = 0;
-    
-    initial begin
-        clk = 0;
-        #1000 $stop;
-    end
-    
+reg clk=0;
+reg[7:0] switch=0;
+reg[3:0] button;
+reg minutes = 3;
+reg seconds = 2;
+reg[3:0] AnodeSelect = 0;
+reg[6:0] LED_value = 0;
+seven_seg_display UUT(minutes, seconds, clk, Anode_select);
+>>>>>>> 08bd0f46d885389333b7ac3610ba12b23efd663f
     always begin
         #5
         clk = ~clk;
@@ -22,7 +17,5 @@ module tb;
             adj = 1;
         end;
     end
-    
-    
 endmodule
     
