@@ -11,6 +11,9 @@ output reg [5:0] min = 10;
 output reg [5:0] sec = 59;
 output reg blink = 0;
 
+reg [1:0] state = 0;
+reg [1:0] state_d;
+
 reg [1:0] pauseSR = {1'b0,1'b0};
 reg [1:0] resetSR = {1'b0, 1'b0};
 
