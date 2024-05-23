@@ -38,7 +38,7 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
             adjClk_d = 0;
         end
         
-        if(counter2 < (100000000 / 400) / 2) begin
+        if(counter2 < (100000000 / 2) / 2) begin
                 dispClk_d = 1;
         end else begin
                 dispClk_d = 0;
