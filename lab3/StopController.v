@@ -7,19 +7,19 @@ input adj;
 input pause;
 input sel;
 input reset;
-output reg [5:0] min = 10;
-output reg [5:0] sec = 59;
+output reg [5:0] min = 0;
+output reg [5:0] sec = 0;
 output reg blink = 0;
 
 reg [1:0] state = 0;
-reg [1:0] state_d;
+reg [1:0] state_d = 0;
 
 reg [1:0] pauseSR = {1'b0,1'b0};
 reg [1:0] resetSR = {1'b0, 1'b0};
 reg rst = 0;
 
-reg [5:0] min_d = 10;
-reg [5:0] sec_d = 59;
+reg [5:0] min_d = 0;
+reg [5:0] sec_d = 0;
 
 parameter RUN = 0;
 parameter SET = 1;
@@ -93,17 +93,9 @@ always@ (*) begin
                 min_d = min;
             end
         end
-//        RESET: begin
-//            if(resetSR == 2'b10) begin
-//                state_d = RESET;
-//            end else if(pauseSR == 2'b10) begin
-//                state_d = PAUSE;
-//            end else if(adj) begin
-//                state_d = SET;
-//            end else begin
-//                state_d = RUN;
-//            end
-//        end
+        default: begin
+            state_d = RUN;
+        end
     endcase
 end
 

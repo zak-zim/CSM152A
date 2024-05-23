@@ -10,6 +10,10 @@ DFFs mod1(sig_in, s1, slow_clk);
 DFFs mod2(s1, s2, slow_clk);
 DFFs mod3(s2, s3, slow_clk);
 
+initial begin
+    sw_valid = sig_in;
+end
+
 always@ (*) begin
     if(s1 & s2 & !s3) begin
         sw_valid = 1;

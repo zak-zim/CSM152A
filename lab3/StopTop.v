@@ -19,7 +19,7 @@ wire dispClk;
 wire blinkClk;
 wire [5:0] min;
 wire [5:0] sec;
-wire blink = 0;
+wire blink;
 
 db debon1(reset, dispClk, reset_clean);
 ds debon2(sel, dispClk, sel_clean);
@@ -27,6 +27,6 @@ ds debon3(adj, dispClk, adj_clean);
 db debon4(pause, dispClk, pause_clean);
 clock clock(clk, counterClk, adjClk, dispClk, blinkClk);
 StopController controller(clk, counterClk, adjClk, adj_clean, pause_clean, sel_clean, reset_clean, min, sec, blink);
-sevsegdisp disp(dispClk, 6'b000101, 6'b111001, seg, an);
+sevsegdisp disp(dispClk, min, sec, seg, an);
 
 endmodule
