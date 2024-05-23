@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module StopController(clk, counterClk, adjClk, adj, pause, sel, reset, min, sec, blink);
 
 input clk;

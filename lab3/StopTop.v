@@ -1,15 +1,14 @@
-module StopTop(reset, clk, sel, adj, pause);
+module StopTop(clk, Anode_select, LED_value);
 
-input reset;
+//input reset;
 input clk;
-input sel;
-input adj;
-input pause;
+//input sel;
+//input adj;
+//input pause;
 
-wire counterClk;
-wire adjClk;
-wire dispClk;
-wire blinkClk;
+    output [3:0] Anode_select;
+    output [6:0] LED_value;
+
 wire [5:0] min;
 wire [5:0] sec;
 wire blink;
