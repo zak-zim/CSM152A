@@ -16,6 +16,7 @@ reg [1:0] state_d;
 
 reg [1:0] pauseSR = {1'b0,1'b0};
 reg [1:0] resetSR = {1'b0, 1'b0};
+reg rst = 0;
 
 reg [5:0] min_d = 10;
 reg [5:0] sec_d = 59;
@@ -23,14 +24,15 @@ reg [5:0] sec_d = 59;
 parameter RUN = 0;
 parameter SET = 1;
 parameter PAUSE = 2;
-parameter RESET = 3;
+//parameter RESET = 3;
 
 always@ (*) begin
     case(state)
         RUN: begin
             if(resetSR == 2'b10) begin
-                state_d = RESET;
-            end else if(pauseSR == 2'b10) begin
+                rst = 1;
+            end
+            if(pauseSR == 2'b10) begin
                 state_d = PAUSE;
             end else if (adj) begin
                 state_d = SET;
@@ -51,8 +53,9 @@ always@ (*) begin
         end
         SET: begin
             if(resetSR == 2'b10) begin
-                state_d = RESET;
-            end else if(pauseSR == 2'b10) begin
+                rst = 1;
+            end
+            if(pauseSR == 2'b10) begin
                 state_d = PAUSE;
                 blink = 0;
             end else if(~adj) begin
@@ -64,19 +67,12 @@ always@ (*) begin
                 if(sel) begin
                     sec_d = sec + 1;
                     if(sec_d > 6'b111011) begin
-                        sec_d = sec_d - 6'b111011;
-                        if(min_d >= 6'b111011) begin
-                            min_d = 6'b111011;
-                        end else begin
-                            min_d = min + 1;
-                        end
-                    end else begin
-                        min_d = min;
+                        sec_d = 6'b000000;
                     end
                 end else begin
                     sec_d = sec;
-                    if(min_d >= 6'b111011) begin
-                        min_d = 6'b111011;
+                    if(min_d > 6'b111011) begin
+                        min_d = 6'b000000;
                     end else begin
                         min_d = min + 1;
                     end
@@ -85,8 +81,9 @@ always@ (*) begin
         end
         PAUSE: begin
             if(resetSR == 2'b10) begin
-                state_d = RESET;
-            end else if((pauseSR == 2'b10) && adj) begin
+                rst = 1;
+            end
+            if((pauseSR == 2'b10) && adj) begin
                 state_d = SET;
             end else if((pauseSR == 2'b10) && ~adj) begin
                 state_d = RUN;
@@ -96,26 +93,29 @@ always@ (*) begin
                 min_d = min;
             end
         end
-        RESET: begin
-            if(resetSR == 2'b10) begin
-                state_d = RESET;
-            end else if(pauseSR == 2'b10) begin
-                state_d = PAUSE;
-            end else if(adj) begin
-                state_d = SET;
-            end else begin
-                state_d = RUN;
-            end
-        end
+//        RESET: begin
+//            if(resetSR == 2'b10) begin
+//                state_d = RESET;
+//            end else if(pauseSR == 2'b10) begin
+//                state_d = PAUSE;
+//            end else if(adj) begin
+//                state_d = SET;
+//            end else begin
+//                state_d = RUN;
+//            end
+//        end
     endcase
 end
 
 always@ (posedge clk) begin
     pauseSR <= { pauseSR[0], pause };
     resetSR <= { resetSR[0], reset };
-    if(state == RESET) begin
+    if(rst) begin
+//    if(state == RESET) begin
         sec <= 6'b000000;
         min <= 6'b000000;
+        rst <= 0;
+//    end
     end
     state <= state_d;
 end

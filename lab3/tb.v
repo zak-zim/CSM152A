@@ -1,10 +1,10 @@
 module tb;
 
     reg clk;
-    reg reset = 0;
-    reg sel = 0;
-    reg adj = 0;
-    reg pause = 0;
+    reg reset = 1;
+    reg sel = 1;
+    reg adj = 1;
+    reg pause = 1;
     
     StopTop UUT(reset, clk, sel, adj, pause);
     integer i = 0;
@@ -25,7 +25,7 @@ module tb;
             pause = 0;
         end
         if(i > 20000000) begin
-            reset = 1;
+            reset = 0;
             pause = 0;
         end;
         if(i > 20001000) begin
