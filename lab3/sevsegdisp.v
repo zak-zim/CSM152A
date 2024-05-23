@@ -8,6 +8,7 @@ output reg [3:0] Anode;
 
 reg [1:0] activate = 0;
 reg [3:0] digit;
+reg [1:0] timer;
 
 initial begin
     activate = 0;
@@ -19,30 +20,28 @@ always@ (posedge clk) begin
 end
 
 always@ (*) begin
-    Anode = 4'b1110;
-    digit = clk;
-//    case(activate)
-//        2'b00: begin
-//            Anode = 4'b0111;
-//            digit = 4'b0011;
-//        end
-//        2'b01: begin
-//            Anode = 4'b1011;
-//            digit = 4'b0010;
-//        end
-//        2'b10: begin
-//            Anode = 4'b1101;
-//            digit = 4'b0011;
-//        end
-//        2'b11: begin
-//            Anode = 4'b1110;
-//            digit = 4'b0100;
-//        end
-//        default: begin
-//            Anode = 4'b0111;
-//            digit = 4'b0110;
-//        end
-//     endcase
+    case(activate)
+        2'b00: begin
+            Anode = 4'b0111;
+            digit = 4'b0011;
+        end
+        2'b01: begin
+            Anode = 4'b1011;
+            digit = 4'b0010;
+        end
+        2'b10: begin
+            Anode = 4'b1101;
+            digit = 4'b0000;
+        end
+        2'b11: begin
+            Anode = 4'b1110;
+            digit = 4'b0100;
+        end
+        default: begin
+            Anode = 4'b0111;
+            digit = 4'b0110;
+        end
+     endcase
 end
 
 always@ (*) begin

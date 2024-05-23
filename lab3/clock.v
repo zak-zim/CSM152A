@@ -18,6 +18,7 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
     reg adjClk_d = 0;
     reg dispClk_d = 0;
     reg blinkClk_d = 0;
+
     
     always@ (posedge clk) begin
         counter <= counter_d;
@@ -31,18 +32,25 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
     end
     
     always@ (*) begin
-        
+    
+        if(counter2 == 99999) begin
+            counter2_d = 0;
+            dispClk_d = ~dispClk;
+        end else begin
+            counter2_d = counter2 + 1;
+        end
+    
         if(counter1 < (100000000 / 2) / 2) begin
             adjClk_d = 1;
         end else begin
             adjClk_d = 0;
         end
         
-        if(counter2 < (100000000 / 2) / 2) begin
-                dispClk_d = 1;
-        end else begin
-                dispClk_d = 0;
-        end
+//        if(counter2 < (100000000 / 80) / 2) begin
+//                dispClk_d = 1;
+//        end else begin
+//                dispClk_d = 0;
+//        end
         
         if(counter3 < (100000000 / 4) / 2) begin
                 blinkClk_d = 1;
@@ -56,11 +64,11 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
             counter1_d = counter1 + 1;
         end
         
-        if(counter2 == (100000000 / 400) - 1) begin
-            counter2_d = 0;
-        end else begin
-            counter2_d = counter2 + 1;
-        end
+//        if(counter2 == (100000000 / 80) - 1) begin
+//            counter2_d = 0;
+//        end else begin
+//            counter2_d = counter2 + 1;
+//        end
         
         if(counter3 == (100000000 / 4) - 1) begin
             counter3_d = 0;
@@ -72,7 +80,7 @@ module clock(clk, countClk, adjClk, dispClk, blinkClk);
             countClk_d = 1;
         end else begin
             countClk_d = 0;
-        end;
+        end
         
         if(counter == 100000000 - 1) begin
             counter_d = 0;

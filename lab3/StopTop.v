@@ -13,10 +13,10 @@ wire sel_clean;
 wire adj_clean;
 wire pause_clean;
 
-wire counterClk = 0;
-wire adjClk = 0;
-wire dispClk = 0;
-wire blinkClk = 0;
+wire counterClk;
+wire adjClk;
+wire dispClk;
+wire blinkClk;
 wire [5:0] min;
 wire [5:0] sec;
 wire blink = 0;
