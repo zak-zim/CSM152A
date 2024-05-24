@@ -1,8 +1,10 @@
-module sevsegdisp(clk, min, sec, leds, Anode);
+module sevsegdisp(clk, min, sec, en1, en2, leds, Anode);
 
 input clk;
 input [5:0] min;
 input [5:0] sec;
+input en1;
+input en2;
 output reg [6:0] leds;
 output reg [3:0] Anode;
 
@@ -23,23 +25,39 @@ always@ (*) begin
     case(activate)
         2'b00: begin
             Anode = 4'b0111;
-            digit = min / 4'b1010;
+            if(~en2) begin
+                digit = min / 4'b1010;
+            end else begin
+                digit = 4'b1111;
+            end
         end
         2'b01: begin
             Anode = 4'b1011;
-            digit = min % 4'b1010;
+            if(~en2) begin
+                digit = min % 4'b1010;
+            end else begin
+                digit = 4'b1111;
+            end
         end
         2'b10: begin
             Anode = 4'b1101;
-            digit = sec / 4'b1010;
+            if(~en1) begin
+                digit = sec / 4'b1010;
+            end else begin
+                digit = 4'b1111;
+            end
         end
         2'b11: begin
             Anode = 4'b1110;
-            digit = (sec % 4'b1010);
+            if(~en1) begin
+                digit = sec % 4'b1010;
+            end else begin
+                digit = 4'b1111;
+            end
         end
         default: begin
             Anode = 4'b0111;
-            digit = 4'b0000;
+            digit = 4'b1111;
         end
      endcase
 end
@@ -56,6 +74,7 @@ always@ (*) begin
          4'b0111: leds = 7'b1111000;
          4'b1000: leds = 7'b0000000;
          4'b1001: leds = 7'b0011000;
+         4'b1111: leds = 7'b1111111;
          default: leds = 7'b0111111;
      endcase
 end
