@@ -18,8 +18,11 @@ module tb;
         #5
         clk = ~clk;
         i = i + 1;
-        if( i < 10000000) begin
+        if(i < 5000000) begin
             adj = 0;
+        end
+        if( i < 10000000) begin
+            adj = 1;
         end else begin
             adj = 1;
         end

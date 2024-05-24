@@ -60,8 +60,8 @@ always@ (*) begin
             end else begin
                 if(sec == 59) begin
                     if(min == 59) begin
-                        sec_d = MAX - 1'b1;
-                        min_d = MAX - 1'b1;
+                          sec_d = 0;
+                          min_d = 0;
                     end else begin
                         sec_d = 0;
                         min_d = min + 1;
