@@ -1,4 +1,4 @@
-module rps(clk, move1, move2, result);
+module RPS(clk, move1, move2, result);
 
 input clk;
 input [1:0] move1; //either 0, 1, 2 same as parameter
