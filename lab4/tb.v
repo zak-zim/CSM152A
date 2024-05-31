@@ -5,8 +5,9 @@ module tb();
     reg conf1;
     reg sel2;
     reg conf2;
+    reg start;
     
-    top UUT(clk, sel1, conf1, sel2, conf2);
+    top UUT(clk, sel1, conf1, sel2, conf2, start);
     
     initial begin
         clk = 0;
@@ -14,6 +15,7 @@ module tb();
         conf1 = 0;
         sel2 = 0;
         conf2 = 0;
+        start = 0;
         #1000 $stop;
     end
     
@@ -73,6 +75,7 @@ module tb();
             conf1 = 0;
             sel2 = 0;
             conf2 = 0;
+            start = 1;
         end
     end
 

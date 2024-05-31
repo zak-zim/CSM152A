@@ -1,8 +1,9 @@
-module RPS(clk, move1, move2, result);
+module RPS(clk, move1, move2, start, result);
 
 input clk;
-input [1:0] move1; //either 0, 1, 2 same as parameter
+input [1:0] move1;
 input [1:0] move2;
+input start;
 output wire [1:0] result;
 
 reg [1:0] res;
@@ -23,6 +24,14 @@ always@ (posedge clk) begin
     res <= result_d;
 end
 
+always@ (posedge start) begin
+    if(res != NONE) begin
+        res <= NONE;
+    end else begin
+        res <= res;
+    end
+end
+
 always@ (*) begin
     case(move1)
         ROCK: begin
@@ -38,7 +47,7 @@ always@ (*) begin
                 end
                 default: begin
                     result_d = NONE;
-                end                 
+                end
             endcase
         end
         PAPER: begin

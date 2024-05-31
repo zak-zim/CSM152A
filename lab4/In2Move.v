@@ -1,7 +1,8 @@
-module In2Move(clk, sel, confirm, move);
+module In2Move(clk, sel, start, confirm, move);
 
 input clk;
 input sel;
+input start;
 input confirm;
 output reg [1:0] move;
 
@@ -10,6 +11,11 @@ reg [1:0] move_d;
 
 always@ (posedge clk) begin
     move <= move_d;
+end
+
+always@ (posedge start) begin
+    move_d <= 2'b11;
+    opt <= 2'b11;
 end
 
 always@ (posedge sel) begin
@@ -21,7 +27,7 @@ always@ (posedge sel) begin
 end
 
 always@ (negedge confirm) begin
-    move_d = opt;
+    move_d <= opt;
 end
 
 endmodule
