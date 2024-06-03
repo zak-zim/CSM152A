@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module clock(
     clk, Hz, output_clk
     );
@@ -28,5 +29,9 @@ always@ (*) begin
         counter_d <= counter+1;
     end
 end
+=======
+module clock();
+
+>>>>>>> 88577e183e8bf2a740cefc1345fdb90f13991c54
 
 endmodule
