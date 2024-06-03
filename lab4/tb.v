@@ -1,37 +1,42 @@
 module tb();
 
     reg clk;
+    reg mode;
     reg sel1;
     reg conf1;
     reg sel2;
     reg conf2;
     reg start;
-    reg en;
     wire [1:0] out;
     
-//    top UUT(clk, sel1, conf1, sel2, conf2, start);
-    CPUPlayer UUT(clk, en, out);
+    top UUT(clk, mode, sel1, conf1, sel2, conf2, start);
+//    CPUPlayer UUT(clk, en, out);
     
     initial begin
         clk = 0;
+        mode = 1;
         sel1 = 0;
         conf1 = 0;
         sel2 = 0;
         conf2 = 0;
         start = 0;
-        en = 0;
         #1000 $stop;
     end
     
     integer i = 0;
+    integer j = 0;
     
     always begin
         #5
         clk = ~clk;
         i = i + 1;
-        if(i < 5000000) begin
-            en = ~en;
+        if(i < 12000000) begin
+            conf1 = ~conf1;
             i = 0;
+        end
+        if(j < 70000) begin
+            sel1 = ~sel1;
+            j = 0;
         end
 //        if(i < 10000000) begin
 //            sel1 = 0;

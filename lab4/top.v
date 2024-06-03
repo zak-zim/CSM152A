@@ -40,6 +40,6 @@ assign move2 = cpu_mode ? cpu_move : player_move2;
 
 RPS game(clk, move1, move2, start_clean, result);
 
-disp display();
+disp display(dv_clk, result, seg, an);
 
 endmodule
