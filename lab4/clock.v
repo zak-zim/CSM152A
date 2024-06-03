@@ -1,4 +1,4 @@
-module clock(
+module clock();
 
-    );
+
 endmodule
