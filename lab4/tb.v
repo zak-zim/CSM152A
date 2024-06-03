@@ -9,6 +9,20 @@ module tb();
     reg en;
     wire [1:0] out;
     
+    clock UUT(clk, hz);
+    
+    integer  i = 0;
+    initial begin
+        clk = 0;
+        #1000 $stop;
+    end
+        
+        always begin
+            #5
+            clk = ~clk;
+            
+        end 
+
 //    top UUT(clk, sel1, conf1, sel2, conf2, start);
     CPUPlayer UUT(clk, en, out);
     
