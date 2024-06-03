@@ -30,11 +30,11 @@ module tb();
         clk = ~clk;
         i = i + 1;
         x = x + 1;
-        if(i < 12000000) begin
+        if(i == 5000000) begin
             conf1 = ~conf1;
             i = 0;
         end
-        if(x < 170000) begin
+        if(x == 170000) begin
             sel1 = ~sel1;
             x = 0;
         end
