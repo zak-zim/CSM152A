@@ -8,7 +8,7 @@ input sel2;
 input conf2;
 input start;
 output [6:0] seg;
-output [4:0] an;
+output [3:0] an;
 
 wire [1:0] move1;
 wire [1:0] move2;
@@ -24,7 +24,7 @@ wire sel2_clean;
 wire conf2_clean;
 wire start_clean;
 
-clock clkDv(clk, dv_clk);
+clock clkDv(clk, 400, dv_clk);
 
 db sel1db(sel1, dv_clk, sel1_clean);
 db conf1db(conf1, dv_clk, conf1_clean);
