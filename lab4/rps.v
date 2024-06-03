@@ -20,15 +20,15 @@ parameter P1WIN = 2'b01;
 parameter P2WIN = 2'b10;
 parameter TIE = 2'b11;
 
-always@ (posedge clk) begin
-    res <= result_d;
-end
-
-always@ (posedge start) begin
-    if(res != NONE) begin
-        res <= NONE;
+always@ (posedge start, posedge clk) begin
+    if(start) begin
+        if(res != NONE) begin
+            res <= NONE;
+        end else begin
+            res <= res;
+        end
     end else begin
-        res <= res;
+        res <= result_d;
     end
 end
 

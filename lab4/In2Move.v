@@ -13,21 +13,19 @@ always@ (posedge clk) begin
     move <= move_d;
 end
 
-always@ (posedge start) begin
-    move_d <= 2'b11;
-    opt <= 2'b11;
-end
-
-always@ (posedge sel) begin
-    if(opt == 2'b10) begin
-        opt = 2'b00;
+always@ (posedge sel, negedge confirm, posedge start) begin
+    if(sel) begin
+        if(opt == 2'b10) begin
+            opt = 2'b00;
+        end else begin
+            opt = opt + 1;
+        end
+    end else if(start) begin
+        move_d <= 2'b11;
+        opt <= 2'b11;
     end else begin
-        opt = opt + 1;
+        move_d <= opt;
     end
-end
-
-always@ (negedge confirm) begin
-    move_d <= opt;
 end
 
 endmodule
