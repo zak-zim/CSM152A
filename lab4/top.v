@@ -1,4 +1,4 @@
-module top(clk, sel1, conf1, sel2, conf2, start);
+module top(clk, sel1, conf1, sel2, conf2, start, seg, an);
 
 input clk;
 input sel1;
@@ -6,6 +6,8 @@ input conf1;
 input sel2;
 input conf2;
 input start;
+output [6:0] seg;
+output [4:0] an;
 
 wire [1:0] move1;
 wire [1:0] move2;
