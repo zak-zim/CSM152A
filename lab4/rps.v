@@ -1,15 +1,18 @@
-module RPS(clk, move1, move2, start, result);
+module RPS(clk, move1, move2, start, result, ready);
 
 input clk;
 input [1:0] move1;
 input [1:0] move2;
 input start;
 output wire [1:0] result;
+output wire ready;
 
 reg [1:0] res;
 reg [1:0] result_d;
 
 assign result = res;
+
+assign ready = (res == 2'b00) ? 0 : 1;
 
 parameter ROCK = 2'b00;
 parameter PAPER = 2'b01;

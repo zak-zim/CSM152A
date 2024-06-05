@@ -7,8 +7,10 @@ module tb();
     reg sel2;
     reg conf2;
     reg start;
+    wire [6:0] seg;
+    wire [3:0] an;
     
-    top UUT(clk, mode, sel1, conf1, sel2, conf2, start);
+    top UUT(clk, mode, sel1, conf1, sel2, conf2, start, seg, an);
 //    CPUPlayer UUT(clk, en, out);
     
     initial begin

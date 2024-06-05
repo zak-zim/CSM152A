@@ -24,6 +24,12 @@ wire sel2_clean;
 wire conf2_clean;
 wire start_clean;
 
+wire ready;
+wire [3:0] d1;
+wire [3:0] d2;
+wire [3:0] d3;
+wire [3:0] d4;
+
 clock clkDv(clk, 400, dv_clk);
 
 db sel1db(sel1, dv_clk, sel1_clean);
@@ -38,8 +44,10 @@ CPUPlayer cpu(clk, conf1_clean, cpu_move);
 
 assign move2 = cpu_mode ? cpu_move : player_move2;
 
-RPS game(clk, move1, move2, start_clean, result);
+RPS game(clk, move1, move2, start_clean, result, ready);
 
-disp display(dv_clk, result, seg, an);
+suspense sus(clk, dv_clk, ready, move1, move2, result, d1, d2, d3, d4);
+
+disp display(dv_clk, d1, d2, d3, d4, seg, an);
 
 endmodule
