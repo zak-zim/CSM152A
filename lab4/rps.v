@@ -8,7 +8,7 @@ output wire [1:0] result;
 output wire ready;
 
 reg [1:0] res;
-reg [1:0] result_d;
+reg [1:0] result_d = 2'b00;
 
 assign result = res;
 

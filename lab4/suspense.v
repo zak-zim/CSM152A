@@ -19,8 +19,8 @@ parameter ONE = 4'b0001;
 parameter TWO = 4'b0010;
 parameter ERR = 4'b1000;
 
-reg [19:0] counter;
-reg [19:0] counter_d;
+reg [14:0] counter;
+reg [14:0] counter_d;
 
 reg [3:0] d1;
 reg [3:0] d2;
@@ -84,12 +84,12 @@ end
 always@ (*) begin
     if(en) begin
         counter_d = counter + 1;
-        if(counter < 10) begin
+        if(counter < 800) begin
             d1_d = P;
             d2_d = ONE;
             d3_d = OFF;
             d4_d = choice1;
-        end else if (counter < 20) begin
+        end else if (counter < 1600) begin
             d1_d = P;
             d2_d = TWO;
             d3_d = OFF;
